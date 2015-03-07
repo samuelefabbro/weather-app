@@ -25,15 +25,11 @@ client.lookup_by_location(zip)
 
 end
 
-
 weather = get_zip(zip)
 
 
 t = Time.now
 today = t.strftime("%w").to_i
-
-
-
 
 
 weather.forecasts.each do |forecast|
@@ -47,10 +43,10 @@ weather.forecasts.each do |forecast|
 		which_day = forecast["date"].strftime("%a")
 	end
  
-	lows = (1.8 * forecast["low"] + 32).round
-	highs = (1.8 * forecast["high"] + 32).round
+	lows = forecast["low"].round
+	highs = forecast["high"].round
 
 	puts which_day.to_s + " is going to be " + forecast["text"] +
 	 " with a low of " + lows.to_s + " and a high of " +
-	  highs.to_s + " degrees Farenheit."
+	  highs.to_s + " degrees."
 end
